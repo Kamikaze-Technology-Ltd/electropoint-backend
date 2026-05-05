@@ -1,0 +1,10 @@
+# Passenger config
+PassengerAppRoot "/home/h1cb7dgxo4hn/public_html/api.bigvicstore.com"
+PassengerBaseURI "/api"
+PassengerNodejs "/home/h1cb7dgxo4hn/nodevenv/public_html/api.bigvicstore.com/24/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
