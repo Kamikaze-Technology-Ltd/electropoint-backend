@@ -12,8 +12,8 @@ const app = express();
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
   : [
-      "https://bigvicstore.com",
-      "https://www.bigvicstore.com",
+      "https://electropointhub.com",
+      "https://www.electropointhub.com",
       "http://localhost:3000",
       "http://localhost:5173", // Vite dev server
     ];
@@ -63,9 +63,9 @@ if (isProduction) {
         "'self'",
         "data:",
         "blob:",
-        "https://bigvicstore.com",
-        "https://www.bigvicstore.com",
-        "https://api.bigvicstore.com",
+        "https://electropointhub.com",
+        "https://www.electropointhub.com",
+        "https://api.electropointhub.com",
         "http://localhost:3000",
         "http://localhost:5000",
         "https:",
@@ -74,7 +74,7 @@ if (isProduction) {
         "'self'",
         "'unsafe-inline'",
         "'unsafe-eval'",
-        "https://bigvicstore.com",
+        "https://electropointhub.com",
         "https://js.paystack.co", // ✅ Added Paystack
         "http://localhost:3000",
         "http://localhost:5173",
@@ -85,12 +85,11 @@ if (isProduction) {
         "https://fonts.googleapis.com",
       ],
       "font-src": ["'self'", "https://fonts.gstatic.com"],
-      // ✅ THIS WAS THE PROBLEM — api.bigvicstore.com was missing
       "connect-src": [
         "'self'",
-        "https://bigvicstore.com",
-        "https://www.bigvicstore.com",
-        "https://api.bigvicstore.com", // ✅ Your API domain
+        "https://electropointhub.com",
+        "https://www.electropointhub.com",
+        "https://api.electropointhub.com",
         "https://api.paystack.co", // ✅ Paystack API
         "http://localhost:3000",
         "http://localhost:5000",
@@ -206,11 +205,11 @@ app.get("/api/health", (req, res) => {
 // Root route
 app.get("/", (req, res) => {
   res.json({
-    name: "BigVic Store API",
+    name: "Electropoint Hub API",
     version: "1.0.0",
     environment: process.env.NODE_ENV || "development",
     status: "online",
-    documentation: "https://bigvicstore.com/api-docs",
+    documentation: "https://electropointhub.com/api-docs",
     support: "brabadan13@gmail.com",
   });
 });
