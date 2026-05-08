@@ -448,7 +448,7 @@ const createProduct = async (req, res) => {
     if (req.files && req.files.length > 0) {
       const imageValues = req.files.map((file) => [
         productId,
-        `/uploads/${file.filename}`,
+        file.path,
       ]);
 
       await connection.query(
@@ -568,7 +568,7 @@ const updateProduct = async (req, res) => {
       // Insert new images
       const imageValues = req.files.map((file) => [
         productId,
-        `/uploads/${file.filename}`,
+        file.path,
       ]);
 
       await connection.query(
@@ -848,7 +848,7 @@ const submitPaymentReceipt = async (req, res) => {
         .json({ message: "Please upload a payment receipt" });
     }
 
-    const receiptUrl = `/uploads/${req.file.filename}`;
+    const receiptUrl = req.file.path;
 
     // ── Insert linked to logged-in user (mirrors vendor_id → req.user.id) ──
     const [result] = await connection.execute(
@@ -1021,7 +1021,7 @@ module.exports = {
   setFlashSale,
   getProductsByStatus,
   updateProductStatus,
-  submitPaymentReceipt: [upload.single("receipt"), submitPaymentReceipt],
+  submitPaymentReceipt: [upload.receipt.single("receipt"), submitPaymentReceipt],
   updatePaymentReceiptStatus,
   getPaymentReceipts,
 };
